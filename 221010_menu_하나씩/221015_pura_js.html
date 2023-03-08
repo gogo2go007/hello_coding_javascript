@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>puracaaban자바스크립트</title>
+</head>
+<body>
+<header>
+    <div class="top_nav">
+        <div class="center">
+            <div class="top_nav_left">
+                <ul>
+                    <li><img src="img/img_call.png" alt=""></li>
+                    <li>1599-3360</li>
+                    <li>오후1시 - 오후5시 (주말, 및 공휴일은 휴무입니다)</li>
+                </ul>
+            </div>
+            <div class="top_nav_right">
+                <ul>
+                    <li><a href="#"><img src="img/icon_user.png" alt=""></a></li>
+                    <li><a href="#"><img src="img/icon_user_02.gif" alt=""></a></li>
+                    <li><a href="#"><img src="img/icon_wish.png" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="top_nav_mypage"><a href="#">마이페이지</a></div>
+        </div>
+    </div>
+    <div class="gnb">
+        <div class="gnb_bg"></div>
+        <div class="center">
+            <div class="logo"><a href="#"><img src="img/logo.png" alt=""></a></div>
+            <ul class="gnb_menu">
+                <li>
+                    <a href="#">WE ARE</a>
+                    <div class="sub_menu">
+                        <a href="#">OUR STORY</a>
+                        <a href="#">NEED TO KNOW</a>
+                        <a href="#">OUR MISSION</a>
+                        <a href="#">OUR MISSION</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">FOR CHILDREN</a>
+                    <div class="sub_menu">
+                        <a href="#">OUR STORY</a>
+                        <a href="#">NEED TO KNOW</a>
+                        <a href="#">OUR MISSION</a>
+                        <a href="#">OUR MISSION</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">FOR HOME</a>
+                    <div class="sub_menu">
+                        <a href="#">OUR STORY</a>
+                        <a href="#">NEED TO KNOW</a>
+                        <a href="#">OUR MISSION</a>
+                        <a href="#">OUR MISSION</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">COMMUNITY</a>
+                    <div class="sub_menu">
+                        <a href="#">OUR STORY</a>
+                        <a href="#">NEED TO KNOW</a>
+                        <a href="#">OUR MISSION</a>
+                        <a href="#">OUR MISSION</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+    <div class="main_img_wrap">
+        <div class="slider">
+            <ul class="main_img">
+                <li>
+                    <div class="visual_wrap">
+                        <div class="visual_box">
+                            <img src="img/visual1.jpg" alt="">
+                        </div>
+                       <div class="visual_text">
+                            <h2>WE ARE ECO-GUARDIANS</h2>
+                            <p>What’s good for nature is the future of our children.<br>
+                            자연visual_wrap에 좋은 것은 우리 아이들의 미래입니다.</p>
+                       </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="visual_wrap">
+                        <div class="visual_box">
+                            <img src="img/visual2.jpg" alt="">
+                        </div>
+                       <div class="visual_text">
+                            <h2>FOR CHILDREN</h2>
+                            <p>Made from corn, the real gift for our children and mother planet.<br>
+                            우리의 아이들과 지구를 위한 진짜 선물은 옥수수로 만들어진다.</p>
+                       </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="visual_wrap">
+                        <div class="visual_box">
+                            <img src="img/visual3.jpg" alt="">
+                        </div>
+                       <div class="visual_text">
+                            <h2>FOR HOME</h2>
+                            <p>Meet comfort and beauty from nature.<br>
+                            자연에서 오는 편안함과 아름다움을 만나보세요.</p>
+                       </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="main_btn">
+            <ul>
+                <li class="on" class="btn"></li>
+                <li class="btn"></li>
+                <li class="btn"></li>
+            </ul>
+        </div>
+        <div class="left_btn"><img src="img/left_bt.png"></div>
+        <div class="right_btn"><img src="img/right_bt.png"></div>
+    </div>
+    
+    <script>
+        /*메뉴1_통이미지버전*/
+        // const gnb = document .querySelector(".gnb");
+        // const gnb_menu = document .querySelector(".gnb_menu");
+
+        // gnb_menu.addEventListener("mouseenter",function(){
+        //     gnb.classList.add("on");
+        // });
+
+        // gnb_menu.addEventListener("mouseleave",function(){
+        //     gnb.classList.remove("on");
+        // });
+
+        const gnb = document.querySelectorAll(".gnb_menu > li");
+        const depth = document.querySelectorAll(".sub_menu");
+
+        // gnb에 마우스 올리면 해당 메뉴의 서브메뉴가 등장하고 사라지는 구문
+        for(let i = 0; i < gnb.length; i++){
+            gnb[i].addEventListener("mouseenter",function(){
+                depth[i].style.display = "block";    
+                
+            });
+            gnb[i].addEventListener("mouseleave",function(){
+                depth[i].style.display = "none";
+            });
+        }
+
+
+        
+        const slider = document.querySelector(".main_img");
+        
+        const mainImg = document.querySelectorAll(".visual_wrap");
+        // 슬라이드 왼쪽으로 이동 버튼
+        const leftBtn = document.querySelector(".left_btn");
+        // 슬라이드 오른쪽으로 이동 버튼
+        const rightBtn = document.querySelector(".right_btn");
+        // 슬라이드 버튼 모두선택
+        const pager = document.querySelectorAll(".main_btn li");
+        let sNumber = 0;
+
+        rightBtn.addEventListener("click",function(){
+            if(sNumber == pager.length-1){
+                sNumber = 0;
+            }
+            else{
+                sNumber++;
+            }
+
+            for(let i = 0; i < pager.length; i++){
+                pager[i].classList.remove("on");
+            }
+
+            slider.style.marginLeft = -100 * sNumber + "vw";
+            pager[sNumber].classList.add("on");
+        });
+
+        for(let i = 0; i < pager.length; i++){
+            pager[i].addEventListener("click",function(){
+                sNumber = i;
+
+                slider.style.marginLeft = -100 * sNumber + "vw";
+                pager[sNumber].classList.add("on");
+            });
+        }
+
+        leftBtn.addEventListener("click",function(){
+            if(sNumber == pager.length-1){
+                sNumber = 0;
+            }
+            else{
+                sNumber++;
+            }
+            for(let i = 0; i < pager.length; i++){
+                pager[i].classList.remove("on");
+            }
+            slider.style.marginLeft = -100 * sNumber +"vw";
+            pager[sNumber].classList.add("on");
+        });
+        // 슬라이드 하단 동그라미 버튼 클릭 이벤트
+        for(let i = 0; i < pager.length; i++){
+            // 내가 클릭한 동그라미 버튼만 활성화 시키고 페이지 옆으로 이동
+            pager[i].addEventListener("click",function(){
+                // 동그라미 버튼 전체 비활성화
+                for(let j = 0; j < pager.length; j++){
+                    pager[j].classList.remove("on");
+                }
+                sNumber = i;
+                slider.style.marginLeft = -100 * sNumber + "vw";
+                // 내가 클리갛ㄴ 번튼만 활성화
+                pager[sNumber].classList.add("on");
+            });
+        }
+
+        
+
+        
+
+        // 이전 오류 연동이 안되서 오류남  for문 적용 필요
+       
+        /*슬라이드*/       
+    //     document.querySelector(".btn2").addEventListener('click',function(){
+    //         mainImg.style.transform = 'translate(-100vw)';
+    //    });
+    //     document.querySelector(".btn3").addEventListener('click',function(){
+    //         mainImg.style.transform = 'translate(-200vw)';
+    //    });
+    //     document.querySelector(".btn1").addEventListener('click',function(){
+    //         mainImg.style.transform = 'translate(0)';
+    //    });  
+       
+    //    /*좌우버튼*/
+       
+    //    leftBtn.addEventListener("click",function(){
+    //         if(sNumber == 0){
+    //             sNumber = 2;
+    //         }
+    //         else{
+    //             sNumber = sNumber - 1;
+    //         }
+    //         mainImg.style.marginLeft = -100 * sNumber + "vw";
+    //    });
+    //    RightBtn.addEventListener("click",function(){
+    //         if(sNumber == 2){
+    //             sNumber = 0;
+    //         }
+    //         else{
+    //             sNumber = sNumber + 1;
+    //         }
+    //         mainImg.style.marginLeft = -100 * sNumber + "vw";
+    //    });
+    
+
+    
+
+    </script>
+</body>
+</html>

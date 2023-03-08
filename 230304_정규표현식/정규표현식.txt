@@ -1,0 +1,12 @@
+정규표현식/정규식/리젝스
+아이디 특수문자_대소문자 이렇게 기준을 제시해주는것
+정규표현식도 자바스크립트로 정해주기는 해야함
+
+정규표현식 연습사이트
+https://regexr.com/
+
+정규식 설명
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Regular_Expressions
+
+정규식 참고
+https://hamait.tistory.com/342

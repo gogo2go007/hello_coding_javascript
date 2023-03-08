@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬라이드에서 동그라미 버튼이 하는 역할</title>
+    <style>
+        * { margin:0; padding:0;}
+        ul,ol,li { list-style:none;}
+        a { text-decoration:none;}
+        .pager { display:flex;}
+        .pager li {width:30px; height:30px; margin:0 20px; }
+        .pager li.on a { background:red;}
+        .pager li a {display:block; height:100%; border-radius:50%; background:#000; }
+
+    </style>
+</head>
+<body>
+
+    <div class="counter">0</div>
+    <button class="next">이후버튼</button>
+    <ul class="pager">
+        <li class="on"><a href="#"></a></li><!-- 0-->
+        <li><a href="#"></a></li><!-- 1-->
+        <li><a href="#"></a></li><!-- 2-->
+        <li><a href="#"></a></li><!-- 3-->
+        <li><a href="#"></a></li><!-- 4-->
+    </ul>
+    <script>
+        //동그라미 버튼 클릭시 슬라이드 화면이 바뀜 
+        let slideNumber = 0;
+        const pager = document.querySelectorAll(".pager li");
+        
+        //이후 버튼 클릭구간
+        document.querySelector(".next").addEventListener("click",function(){
+             
+             if(slideNumber == 4){
+                 slideNumber = 0;
+             }
+             else{
+                 slideNumber++;
+             }
+
+             document.querySelector(".counter").innerHTML = slideNumber;
+        });
+
+        //동그라미 클릭 구간
+        for(let i=0; i < pager.length; i++){
+
+            pager[i].addEventListener("click",function(){
+
+                //동그라미 버튼 전부 비활성
+                for(let j=0; j < pager.length; j++){
+
+                    pager[j].classList.remove("on"); // li태그 5개 클래스이름 on 전부 제거
+                }
+
+                //클릭한 버튼만 활성화 / 클릭한 버튼에 해당하는 화면만 보이게 만들어줌
+                pager[i].classList.add("on"); // 클릭한 li태그에만 클래스이름 on 추가
+                //i변수값 다른 코드 구간에서 사용불가하기 때문에(반복문에서 사용한 i / j변수는 해당 반복문에서 사용가능)
+                slideNumber = i;
+                document.querySelector(".counter").innerHTML = slideNumber;
+            });
+        }
+
+       
+    </script>
+</body>
+</html>

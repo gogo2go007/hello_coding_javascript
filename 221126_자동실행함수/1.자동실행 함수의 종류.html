@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자동실행함수의 종류 살펴보기</title>
+</head>
+<body>
+    <div class="counter">0</div>
+    <button class="stop">멈춤</button>
+    <button class="play">재생</button>
+    <script>
+        // 함수
+        // 1. 자바스크립트에서 기본으로 제공하는 함수 -> 기본 함수
+        // 2. 중복코드를 정리정돈하기 위해서 함수를 만들어서 -> 사용자 정의 함수
+        // 3. 이벤트를 동작시키기 위해서 익명함수, 즉시실행 함수를 표현하는 것 -> 익명함수
+
+        // 자동실행함수 setInterval()  setTimeout()  clearInterval()  clearTimeout()
+        // 1. setInterval(함수, 초수);
+        // 2. clearInterval(변수명);
+
+        // 변수 세팅
+        let a = 0;
+
+        let autoCounte = setInterval(function(){
+            // 실행할 코드를 작성
+            // a++;
+            // document.querySelector(".counter").innerHTML = a;
+
+            // 숫자가 1씩 증가되다가 10이 되면 증가되는 기능이 멈춤
+            // if(a >= 10){
+            //     clearInterval(autoCounte);
+            // }
+            // else{
+            //     a++;
+            // }
+            // document.querySelector(".counter").innerHTML = a;
+            
+            // 조건문으로 일정시간마다 슬라이드 화면이 변경
+            if(a == 3){
+                a = 0;
+            }
+            else{
+                a++;
+            }
+            document.querySelector(".counter").innerHTML = a;
+
+        },1000);
+
+        // 클릭 시 숫자가 증가되고 글자 내용이 찍히는 기능을 멈추제 만들어 줌
+        document.querySelector(".stop").addEventListener("click",function(){
+            clearInterval(autoCounte);
+        });
+
+        // 클릭 시 슬라이드가 다시 동작하게
+        document.querySelector(".play").addEventListener("click",function(){
+            autoCounte = setInterval(function(){
+                //조건문으로 일정시간마다 슬라이드 화면 변경
+                if(a==3){
+                    a=0;
+                }
+                else{
+                    a++;
+                }
+                document.querySelector(".counter").innerHTML = a;
+            },500);
+        });
+    </script>
+</body>
+</html>

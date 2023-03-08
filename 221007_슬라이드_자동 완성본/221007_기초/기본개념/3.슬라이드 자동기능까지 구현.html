@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬라이드 구현</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box;}
+        a { text-decoration:none;}
+        ul,ol,li { list-style:none;}
+        img,video { vertical-align:top;}
+        table { border-collapse:collapse;}
+        body { line-height:1; font-size:13px;}
+
+        #slide { width:100%; position:relative; overflow: hidden;}
+        #slide .view { width:400%; display:flex; transition:all 3s;}
+        #slide .view > div { width:25%; height:300px; font-size:100px;}
+        #slide .view > div:nth-child(1) { background:orange;}
+        #slide .view > div:nth-child(2) { background:pink;}
+        #slide .view > div:nth-child(3) { background:skyblue;}
+        #slide .view > div:nth-child(4) { background:yellowgreen;}
+
+        #slide .sBtn { position:absolute; top:50%; 
+                       transform:translateY(-50%); width:70px; height:70px; 
+                       border:none; background:#000; color:#fff; }
+
+        #slide .prevBtn {left:10px;}
+        #slide .nextBtn {right:10px;}
+
+        #slide .bot_menu { position:absolute; display:flex; bottom:50px; left:50%; transform:translateX(-50%);}
+        #slide .bot_menu .pager { display:flex;}
+        #slide .bot_menu .pager li { width:40px; height:40px; margin:0 20px;}
+        #slide .bot_menu .pager li.on a { background:gray;}
+        #slide .bot_menu .pager li a { display:block; height:100%; background:#000; border-radius:50%;}
+
+    </style>
+</head>
+<body>
+    <!--슬라이드 태그 구성 -->
+    <div id="slide">
+        <div class="view">
+            <div>화면1</div>
+            <div>화면2</div>
+            <div>화면3</div>
+            <div>화면4</div>
+        </div>
+        <button class="sBtn prevBtn">이전버튼</button>
+        <button class="sBtn nextBtn">이후버튼</button>
+        <div class="bot_menu">
+            <ul class="pager">
+                <li class="on"><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+            <button class="toggleBtn" value="stop">멈춤</button>
+        </div>
+    </div>
+
+    <script>
+        //1.변수 세팅
+        const view = document.querySelector(".view"); //화면 왔다갔다 움직일 대상
+        const prevBtn = document.querySelector(".prevBtn"); // 이전버튼 대상
+        const nextBtn = document.querySelector(".nextBtn"); // 이후버튼 대상
+        const pager = document.querySelectorAll(".bot_menu li"); //동그라미 버튼 4개
+        const toggle = document.querySelector(".toggleBtn"); //자동재생&멈춤 버튼
+        let sNumber = 0; // 슬라이드 화면 번호 // 전역변수 //변수의 유효범위(scope)
+        let toggleValue = ""; // 토글Btn value값을 담기위한 전역변수
+        
+        //이후버튼 클릭시 이벤트 동작
+        nextBtn.addEventListener("click",function(){
+
+            if(sNumber == pager.length-1){
+                sNumber = 0;
+            }
+            else{
+                sNumber++;
+            }
+
+            //버튼 기능을 슬라이드 이동하는(3초) 시간에는 클릭못하게 처리
+            prevBtn.disabled = true;
+            nextBtn.disabled = true;
+
+            //3초 뒤에 function(){}안에 있는 코드가 한번만 실행!
+            setTimeout(function(){
+
+                prevBtn.disabled = false;
+                nextBtn.disabled = false;
+
+            },3000);
+
+
+            //버튼 일괄적으로 색상 비활성화
+            for(let i=0; i < pager.length; i++){
+
+                pager[i].classList.remove("on");
+            }
+            //다음 번호의 동그라미만 색상 활성화
+            pager[sNumber].classList.add("on");
+            //슬라이드 화면이 넘어가는 기능
+            view.style.marginLeft = -100 * sNumber + "%";
+
+        });
+
+
+        //이전버튼 클릭시 이벤트 동작
+        prevBtn.addEventListener("click",function(){
+
+            if(sNumber == 0){
+                sNumber = pager.length-1; // 4-1
+            }
+            else {
+                sNumber--;
+            }
+
+            //3초동안에는 좌,우버튼 클릭못하게 
+            prevBtn.disabled = true;
+            nextBtn.disabled = true;
+            
+            setTimeout(function(){
+
+                prevBtn.disabled = false;
+                nextBtn.disabled = false;
+
+            },3000);
+
+            //동그라미 버튼 전부 색상 비활성화
+            for(let i=0; i<pager.length; i++){
+                pager[i].classList.remove("on");
+            }
+            
+            pager[sNumber].classList.add("on"); //동그라미 버튼 이전꺼 활성화
+            view.style.marginLeft = -100 * sNumber + "%";
+        });
+        
+
+        //자동멈춤&자동재생 버튼 이벤트 동작
+        toggle.addEventListener("click",function(){
+
+             //클릭시 토글버튼의 value 값을 가지고 와서 stop인지 play인지 체크한 다음 기능이 멈춤 / 자동실행이 될 수 있도록 처리
+             toggleValue = toggle.value;
+             if(toggleValue == "stop"){
+                 clearInterval(autoSlide); // setInverval함수가 담겨있는 변수이름으로 멈춰줘야함
+                 toggle.value = "play"; 
+                 toggle.innerHTML = "재생";
+             }
+             else{
+                 //setInterval함수가 다시 동작할 수 있도록 처리
+                 autoSlide = setInterval(function(){
+                    if(sNumber == pager.length-1){
+                        sNumber = 0;
+                    }
+                    else{
+                        sNumber++;
+                    }
+
+                    for(let i=0; i<pager.length; i++){
+                        pager[i].classList.remove("on");
+                    }
+                    pager[sNumber].classList.add("on");
+                    view.style.marginLeft = -100 * sNumber + "%";
+
+                 },5000);
+                 toggle.value = "stop";
+                 toggle.innerHTML = "멈춤";
+             }
+        });
+        
+        //하단 동그라미 버튼 클릭시 이벤트 동작
+        for(let i=0; i<pager.length; i++){ // 지역변수
+            
+            pager[i].addEventListener("click",function(){
+                //동그라미 버튼들 색상 전부 비활성화
+                for(let j=0; j<pager.length; j++){
+
+                    pager[j].classList.remove("on");
+
+                }
+                //클릭한 동그라미만 색상 활성화
+                pager[i].classList.add("on");
+                //클릭시 i변수의 숫자값을 sNumber변수에 옮겨서 데이터를 변경
+                sNumber = i;
+                //슬라이드 화면 부드럽게 넘어감
+                view.style.marginLeft = -100 * sNumber + "%";
+            });
+        }
+    
+        //슬라이드 다음화면으로 자동으로 1장씩 넘어가는 setInterval()
+        let autoSlide = setInterval(function(){
+
+            //3초마다 슬라이드 화면이 다음화면으로 넘어가야함
+            if(sNumber == pager.length-1){
+                sNumber = 0;
+            }
+            else{
+                sNumber++;
+            }
+
+            //좌우 버튼 disabled 처리는 생략
+
+            //버튼 색상 전부 비활성화
+            for(let i=0; i<pager.length; i++){
+                pager[i].classList.remove("on");
+            }
+            //다음 순번의 동그라미 버튼만 활성화
+            pager[sNumber].classList.add("on");
+
+            //슬라이드 다음 화면으로 넘어가는 기능 실행
+            view.style.marginLeft = -100 * sNumber + "%";
+
+        },5000);
+    
+        
+    </script>
+</body>
+</html>

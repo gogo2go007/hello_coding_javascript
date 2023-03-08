@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수의 매개변수와 전달인자</title>
+</head>
+<body>
+    
+    <a class="naver" href="#">클릭하세요</a>
+    <script>
+        //함수라고도 부르고 method 메소드 라고도 부른다.
+
+        // alert() 경고창 함수
+        // document.querySelector() 태그를 선택할 때 쓰는 함수
+        // document.write() 웹브라우저에 텍스트를 표시해주는 함수
+        // document.setAttribute() 태그의 속성값을 변경할 때 쓰는 함수
+        // document.addEventListner() 태그에 이벤트를 달아줄때 쓰는 함수
+        // 현재까지 사용했던 함수명령어 그리고 앞으로 배우고 될 여러 종류의 함수 명령어들..
+        // 자바스크립트 언어에서 기본적으로 만들어져있는 함수들..
+        // 자바스크립트 기본함수 / 기본메소드 라고 부른다.
+
+        // function 키워드로 함수를 만들어서 사용하는 것을 
+        // 사용자 정의함수 / 사용자 정의 메소드 라고 부른다.
+        // function 명령어이름(){} <-- 중괄호 안에 실행되는 코드를 담을 수 있음(변수, 데이터, 조건문, 함수)
+        // 함수 호출을 해야 실행이 됨. 만들기만 해서는 작동하지 않음
+
+        // function 키워드로 함수를 사용하기는 하지만 이름이 없는 함수
+        // 이벤트 함수를 사용할 때 실행되는 코드를 묶어주는 용도로 function 키워드가 사용된다.(함수 이름 없음)
+        // 익명 함수 // 즉시 실행함수
+
+        
+        // document.querySelector(".naver").addEventListener("click",function(){
+        //     // document.querySelector(".naver").setAttribute("href","https://www.daum.net");
+        //     // document.querySelector(".naver").innerHTML = "뒤로";
+        //     alert("클릭했을때 함수가 즉시 실행됩니다");
+        // });
+
+
+        // 함수명령어(데이터) 데이터 값이 어떤 것이 들어가냐에 따라 실행되는 결과가 서로 상이해진다.
+        // 인자(데이터) <----> argument
+        // 매개변수는 인자(데이터)값을 담는 변수 <-----> parameter  키워드 var 이나 let이 사용되지 않는다.
+
+        // Argument는 인자값이라고 부르고 함수(메소드)에서 사용하는 입력값 데이터
+        // 함수나 메소드 호출 시 전달되는 데이터값
+
+        // parameter는 매개변수라고 부르고 함수정의 부분에서 인자값을 담아주는 변수
+
+
+        머리염색("빨간색"); //함수 호출  / 인자값 Argument >빨간색
+        머리염색("노란색"); //함수 호출
+
+        function 머리염색(hair){ //함수 정의 /매개변수 Parameter
+            let 염색색깔 = hair;
+            alert(염색색깔 + "으로 염색을 완료하였습니다");
+        }
+
+        snackShop("떡볶이","김밥","돈가스");
+        snackShop("우동","김밥","튀김");
+
+        function snackShop(food1,food2,food3){
+            console.log(food1 + food2 + food3 + "를 주문하였습니다.");
+        }
+        
+        plus(100, 200, 300);
+
+        function plus(count1,count2,count3){
+            let result = count1 + count2 + count3;
+            
+            alert(result);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>더보기 버튼 구현</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        ol,ul,li{list-style: none;}
+
+        .cont{ display: flex; justify-content: center; background-color: pink; padding: 20px 0;}
+        .cont .center{ width: 1170px; text-align: center;}
+
+        .cont .center .list_wp{ display: flex; flex-wrap: wrap;}
+        .cont .center .list_wp li{ width: 370px; height: 300px; margin: 15px 10px; cursor:pointer; background-color: aquamarine; display: none; font-size: 40px;}
+        .cont .center .list_wp li:nth-child(1),
+        .cont .center .list_wp li:nth-child(2),
+        .cont .center .list_wp li:nth-child(3){display: block;}
+
+        .load_more{ width: 200px; height: 50px; background-color: #000; color: #fff; margin: 0 auto;}
+        
+    </style>
+</head>
+<body>
+   <div class="cont">
+        <div class="center">
+            <h2>더보기 버튼 구현하기</h2>
+            <p>서브타이틀</p>
+            <ul class="list_wp">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+            </ul>
+            <button class="load_more">상품더보기</button>
+
+        </div>
+   </div>
+   <script>
+    // 기능에 필요한 변수 세팅
+    const loadBtn = document.querySelector(".load_more"); //상품 더보기 버튼
+    const boxList = document.querySelectorAll(".list_wp li"); //상품리스트 9개 선택
+    let startIndex = 3; //반복문 초기값 세팅 변수
+
+    //더보기 보튼 눌렀을때 상품리스트가 3개씩 추가로 보여짐
+    loadBtn.addEventListener("click",function(){
+        // 반복문으로 상품리스트를 3개씩 추가 등장하게 처리
+        for(let i = startIndex; i < startIndex + 3; i++){
+            boxList[i].style.display = "block"; //상품을 3개씩 화면에 보이기 처리
+        }
+        startIndex = startIndex + 3; //버튼을 클릭할때마다 startIndex 변수값이 3씩 더해짐
+
+        // startIndex 변수의 값이 boxList.length값보다 크거나 같아지면 더보기 버튼을 없애준다.
+        if(startIndex >= boxList.length){
+            loadBtn.style.display = "none";
+        }
+    });
+
+   </script>
+</body>
+</html>

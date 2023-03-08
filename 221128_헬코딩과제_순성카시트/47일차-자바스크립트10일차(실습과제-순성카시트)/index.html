@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 10일차 실습(순성 카시트)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="bodyBg"></div>
+    <div id="header">
+        <div class="center">
+            <h1 class="logo"><a href="#"><img src="img/logo.png"></a></h1>
+            <div class="gnbwrap">
+                <div class="gnbbg"></div>
+                <ul class="gnb">
+                    <li>
+                        <a href="#">회사소개</a>
+                        <ul class="depth2">
+                            <li><a href="#">순성</a></li>
+                            <li><a href="#">사회공헌</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">안전철학</a>
+                        <ul class="depth2">
+                            <li><a href="#">안전연구소</a></li>
+                            <li><a href="#">안전캠페인</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">브랜드</a>
+                        <ul class="depth2">
+                            <li><a href="#">SOONSUNG</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">뉴스</a>
+                        <ul class="depth2">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">보도자료</a></li>
+                            <li><a href="#">이벤트</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">스토어</a>
+                        <ul class="depth2">
+                            <li><a href="#">온라인</a></li>
+                            <li><a href="#">오프라인</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="h_right">
+                <a href="#">고객지원</a>
+                <a href="#">정품등록</a>
+            </div>
+            <div class="m_btn">
+                <div class="menu">
+                    <span class="line one"></span>
+                    <span class="line two"></span>
+                    <span class="line three"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m_wrap">
+        <div class="m_top">
+            <img class="m_logo" src="img/mov-logo.png">
+            <img class="m_close" src="img/mov-close.png">
+        </div>
+        <ul class="m_gnb">
+            <li>
+                <a href="#">회사소개</a>
+                <ul class="m_sub">
+                    <li><a href="#">순성</a></li>
+                    <li><a href="#">사회공헌</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">안전철학</a>
+                <ul class="m_sub">
+                    <li><a href="#">안전연구소</a></li>
+                    <li><a href="#">안전캠페인</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">브랜드</a>
+                <ul class="m_sub">
+                    <li><a href="#">SOONSUNG</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">뉴스</a>
+                <ul class="m_sub">
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">보도자료</a></li>
+                    <li><a href="#">이벤트</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">스토어</a>
+                <ul class="m_sub">
+                    <li><a href="#">온라인</a></li>
+                    <li><a href="#">오프라인</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="m_bot">
+            <a href="#">고객지원</a>
+            <a href="#">정품등록</a>
+        </div>
+    </div>
+    <div id="container">
+        <div class="slide">
+            <div class="view">
+                <div class="bg_one slideBg"></div>
+                <div class="bg_two slideBg"></div>
+                <div class="bg_three slideBg"></div>
+            </div>
+            <button class="prevBtn sBtn"><i class="fa-solid fa-angles-left"></i></button>
+            <button class="nextBtn sBtn"><i class="fa-solid fa-angles-right"></i></button>
+            <div class="bot_menu">
+                <ul class="pager">
+                    <li class="on"><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="news cont">
+            <div class="center">
+                <h2>SOONSUNG<span> NEWS</span></h2>
+                <div class="c_bot">
+                    <div class="c_box">
+                        <a href="#">
+                            <div class="bg"></div>
+                            <div class="img-box">
+                                <img src="img/news01.jpg">
+                            </div>
+                            <div class="text_box">
+                                <h4>순성 3월 전국 박람회 일정 안내</h4>
+                                <p>안녕하세요, 가장 안전한 약속 순성입니다. 2018년 순성 전국
+                                박람회 일정 안내드립니다.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="c_box">
+                        <a href="#">
+                            <div class="bg"></div>
+                            <div class="img-box">
+                                <img src="img/news03.jpg">
+                            </div>
+                            <div class="text_box">
+                                <h4>2월 설 연휴 배송 공지사항 안내</h4>
+                                <p>안녕하세요, 가장 안전한 약속 순성입니다. 2월11일(일)까지의
+                                주문건은 2월 12일(월)출고되며</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="c_box">
+                        <a href="#">
+                            <div class="bg"></div>
+                            <div class="img-box">
+                                <img src="img/news02.jpg">
+                            </div>
+                            <div class="text_box">
+                                <h4>순성 3월 전국 박람회 일정 안내</h4>
+                                <p>안녕하세요, 가장 안전한 약속 순성입니다. 2018년 순성 전국
+                                박람회 일정 안내드립니다.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="campaign cont">
+            <div class="center">
+                <h2>SAFETY <span>CAMPAIGN</span></h2>
+                <div class="c_bot">
+                    <div class="c_box">
+                        <a href="#">
+                            <div class="bg"></div>
+                            <div class="img-box">
+                                <img src="img/campaign01.jpg">
+                            </div>
+                            <div class="text_box">
+                                <h4>도로교통공단 도봉 운전면허시험장 캠페인 제휴</h4>
+                                <p>도로교통공단 도봉 운전면허시험장 캠페인 제휴 서울 도봉구에
+                                위치한 도로교통공단 도봉</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="c_box">
+                        <a href="#">
+                            <div class="bg"></div>
+                            <div class="img-box">
+                                <img src="img/campaign02.jpg">
+                            </div>
+                            <div class="text_box">
+                                <h4>순성 안전 스토리북 무료 배포</h4>
+                                <p>순성 안전 스토리북 무료 배포 다양한 온라인 배포 이벤트와 오프라인
+                                캠페일 활동을 통해</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="c_box">
+                        <a href="#">
+                            <div class="bg"></div>
+                            <div class="img-box">
+                                <img src="img/campaign03.jpg">
+                            </div>
+                            <div class="text_box">
+                                <h4>안전행복 5가족 이벤트</h4>
+                                <p>안전행복 5가족 이벤트 안전 약속 캠페인 시즌3 '안전배움 행복채움'
+                                캼패안의 일환으로 진행</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cont4">
+            <div class="center">
+                <a href="#">
+                    <div class="blue_box">
+                        <div class="board">
+                            <h3>히 / 스 / 토 / 리</h3>
+                            <p>Since 1952, 순성의 역사가<br>
+                            대한민국 카시트의 역사입니다.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="green_box">
+                        <div class="board">
+                            <h3>안 / 전 / 연 / 구 / 소</h3>
+                            <p>안전 최우선 원칙을 바탕으로 수천 번의 테스트를 통해<br>
+                            세계에서 가장 안전한 카시트를 만듭니다.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="cont5">
+            <div class="t_btnWrap">
+                <div class="t_img">
+                    <img src="img/tab01.png">
+                    <img src="img/tab02.png">
+                </div>
+                <ul class="pager">
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="center">
+            <img src="img/footer_logo.png">
+            <p>(주)순성산업 | 대표 이덕삼 | 경기도 남양주시 진건읍 진건오남로 453<br>
+                고객센터 1522-7466 | Fax 031-574-8273 | E-mail info@soonsung.com
+            </p>
+        </div>
+    </div>
+
+    <script src="js/soonsung_dropdown.js"></script>
+    <script src="js/soonsung_slide.js"></script>
+    <script src="js/soonsung_tab.js"></script>
+    <script src="js/soonsung_mMenu.js"></script>
+</body>
+</html>

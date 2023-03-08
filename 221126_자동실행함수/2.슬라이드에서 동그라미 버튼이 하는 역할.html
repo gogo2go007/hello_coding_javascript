@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬라이드에서 동그라미 버튼이 하는 역할</title>
+    <style>
+        *{ margin: 0; padding: 0;}
+        ol,ul,li{ list-style: none;}
+        a{ text-decoration: none;}
+
+        .pager{ display: flex;}
+        .pager li{ width: 30px; height: 30px; margin: 0 20px;}
+        .pager li.on a{ background-color: red; }
+        .pager li a{ display: block; height: 100%; border-radius: 50%; background-color: #000;}
+    </style>
+</head>
+<body>
+    <div class="counter">0</div>
+    <button class="next">다음</button>
+    <ul class="pager">
+        <li class="on"><a href="#"></a></li><!--0-->
+        <li><a href="#"></a></li><!--1-->
+        <li><a href="#"></a></li><!--2-->
+        <li><a href="#"></a></li><!--3-->
+        <li><a href="#"></a></li><!--4-->
+    </ul>
+
+    <script>
+        const pager = document.querySelectorAll(".pager li");
+        const nextBtn = document.querySelector(".next");
+        const counter = document.querySelector(".counter")
+        let slideNumber = 0;
+
+        // 다음 버튼 클릭 구간
+        nextBtn.addEventListener("click",function(){
+            if(slideNumber == 4){
+                slideNumber = 0;
+            }
+            else{
+                slideNumber++
+            }
+            counter.innerHTML = slideNumber;
+        });
+        
+        for(let i = 0; i < pager.length; i++){
+            pager[i].addEventListener("click",function(){
+                //동그라미 버튼 전부 초기화
+                for(let j = 0; j < pager.length; j++){
+                    pager[j].classList.remove("on"); //li 태그 5개 클래스 이름 on 전부 제거
+                }
+
+                //클릭한 버튼만 활성화 / 클릭한 버튼에 해당하는 화면만 보이게 만들어줌
+                pager[i].classList.add("on");
+                slideNumber = i;
+                counter.innerHTML = slideNumber;
+            });
+        }
+        
+    </script>
+</body>
+</html>

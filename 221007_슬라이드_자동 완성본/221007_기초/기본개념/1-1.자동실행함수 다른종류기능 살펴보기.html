@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="counter">0</div>
+    <button class="prev">이전버튼</button>
+    <button class="next">이후버튼</button>
+
+    <script>
+        // setTimeout(실행할함수명,3000);    clearTimeout(변수명);
+        // 3초가 지난다음 실행할함수명이 딱 한번만 동작하고 멈춤
+        // setTimeout(function(){
+        //     alert("한번만 실행하고 끝");
+        // },2000);
+        const prevBtn = document.querySelector(".prev"); //이전버튼
+        const nextBtn = document.querySelector(".next"); //이후버튼
+        const counter = document.querySelector(".counter");
+        let plus = 0;
+
+        nextBtn.addEventListener("click",function(){
+            
+             //1씩 증가  3이랑 같으면 0으로 변경
+             if(plus == 3){
+                 plus = 0;
+             }
+             else{
+                 plus++;
+             }
+             counter.innerHTML = plus;
+
+             //이전,이후 둘다 비활성화
+             nextBtn.disabled = true;
+             prevBtn.disabled = true;
+
+             //3초뒤에 이전,이후 버튼 활성화
+             let btnStart = setTimeout(function(){
+                 prevBtn.disabled = false;
+                 nextBtn.disabled = false;
+             },3000);
+
+            //  clearTimeout(btnStart);
+
+        });
+
+        prevBtn.addEventListener("click",function(){
+
+            //1씩 감소  0이랑 같으면 3으로 변경
+            if(plus == 0){
+                plus = 3;
+            }
+            else{
+                plus--;
+            }
+            counter.innerHTML = plus;
+
+            // //이전,이후 둘다 비활성화
+            // nextBtn.disabled = true;
+            // prevBtn.disabled = true;
+
+            //  //3초뒤에 이전,이후 버튼 활성화
+            //  let btnStart = setTimeout(function(){
+            //      prevBtn.disabled = false;
+            //      nextBtn.disabled = false;
+            //  },3000);
+
+            //  clearTimeout(btnStart);
+        });
+        
+    </script>
+</body>
+</html>

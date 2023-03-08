@@ -1,0 +1,36 @@
+@charset "UTF-8";
+*{margin: 0; padding: 0}
+img{ border: 0; vertical-align: top;}
+ol,ul,li{ list-style: none;}
+a{ text-decoration: none; color: #333;}
+body{ line-height: 1; font-family: 'Montserrat', sans-serif;}
+.center{ width: 1140px; margin: 0 auto;}
+
+#container{ width: 100%; background-color: pink;}
+#container > h2{ color: #fff; font-size: 35px; text-align: center; 
+                padding: 60px 0;}
+#container .con_contents{ display: flex; justify-content: space-between;
+                        flex-wrap: wrap;}
+#container .con_contents > li{width: 320px; 
+                            background-color: #fff; margin-right: 30px;
+                            padding: 20px; margin-bottom: 30px; display: none;}
+#container .con_contents li:nth-child(1){display: block;}
+#container .con_contents li:nth-child(2){display: block;}
+#container .con_contents li:nth-child(3){display: block;}
+#container .con_contents li:nth-child(3n){ margin-right: 0;}
+#container .con_contents .con_img img{ width: 100%;}
+#container .con_contents .con_txt{ text-align: center;}
+#container .con_contents .con_txt h2{ font-size: 16px; padding: 15px 0; font-weight: 600;}
+#container .con_contents .con_txt p{ font-size: 15px; line-height: 18pt; 
+                                    color: rgb(205, 205, 205); margin-bottom: 15px;}
+#container .con_txt .read{ display: inline-block; padding: 10px 30px; box-sizing: border-box; 
+                            border: 1px solid #333; font-size: 14px; color: rgb(87, 87, 87);
+                            margin-bottom: 15px; cursor: pointer;}
+#container .con_contents .con_sns{display: flex; justify-content: space-between; 
+                                   padding-top: 20px; border-top: 1px solid #333;
+                                    font-size: 14px; color: rgb(128, 128, 128);}
+#container .con_contents .con_sns img{ width: 20px; margin-right: 10px;}
+#container .btn{ width: 180px; height: 50px; line-height: 50px; margin: 40px 0;
+                background-color: #fff; text-align: center; margin: 0 auto;
+                border: 1px solid #333; margin-bottom: 60px;
+                cursor: pointer;}

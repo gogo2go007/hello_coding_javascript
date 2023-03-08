@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수를 사용할 때의 효율성</title>
+    <style>
+        *{ margin: 0; padding: 0; box-sizing: border-box;}
+        ol,ul,li{ list-style: none;}
+        a{ text-decoration: none;}
+
+
+        .tabWrap{ display: flex; justify-content: center;}
+        .tabWrap .center{ width: 800px;}
+        .tabWrap .menu{ display: flex;}
+        .tabWrap .menu li{ width: 25%; height: 40px; line-height: 40px; text-align: center;}
+        .tabWrap .menu li a{ display: block; height: 100%; background-color: orange; color: #000;}
+        .tabWrap .menu li.on a{ background-color: #000; color: #fff;}
+
+        .tabWrap .contents > div { height: 300px; background-color: pink; font-size: 90px; display: none;}
+        .tabWrap .contents > div:first-child{ display: block;}
+/* 
+        두번째 */
+        .tabWrap2{ display: flex; justify-content: center;}
+        .tabWrap2 .center{ width: 1200px;}
+        .tabWrap2 .menu{ display: flex;}
+        .tabWrap2 .menu li{ width: 16.666666%; height: 40px; line-height: 40px; text-align: center;}
+        .tabWrap2 .menu li a{ display: block; height: 100%; background-color: skyblue; color: red;}
+        .tabWrap2 .menu li.on a{ background-color: greenyellow; color: grey;}
+
+        .tabWrap2 .contents > div { height: 300px; background-color: pink; font-size: 90px; display: none;}
+        .tabWrap2 .contents > div:first-child{ display: block;}
+
+    </style>
+</head>
+<body>
+    <div class="tabWrap">
+        <div class="center">
+            <ul class="menu">
+                <li class="on"><a href="#">탭메뉴1</a></li>
+                <li><a href="#">탭메뉴2</a></li>
+                <li><a href="#">탭메뉴3</a></li>
+                <li><a href="#">탭메뉴4</a></li>
+            </ul>
+            <div class="contents">
+                <div>첫번째</div>
+                <div>두번째</div>
+                <div>세번째</div>
+                <div>네번째</div>
+            </div>
+        </div>
+    </div>
+    <div class="tabWrap2">
+        <div class="center">
+            <ul class="menu">
+                <li class="on"><a href="#">탭메뉴1</a></li>
+                <li><a href="#">탭메뉴2</a></li>
+                <li><a href="#">탭메뉴3</a></li>
+                <li><a href="#">탭메뉴4</a></li>
+                <li><a href="#">탭메뉴5</a></li>
+                <li><a href="#">탭메뉴6</a></li>
+            </ul>
+            <div class="contents">
+                <div>첫번째</div>
+                <div>두번째</div>
+                <div>세번째</div>
+                <div>네번째</div>
+                <div>다섯번째</div>
+                <div>여섯번째</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const tabMenu1 = document.querySelectorAll(".tabWrap .menu > li");
+        const tabContents1 = document.querySelectorAll(".tabWrap .contents > div");
+
+        const tabMenu2 = document.querySelectorAll(".tabWrap2 .menu > li");
+        const tabContents2 = document.querySelectorAll(".tabWrap2 .contents > div");
+
+
+        // 함수 쓰지 않을경우의 코드
+        
+        // for( let i = 0; i < tabMenu1.length; i++){
+        //     tabMenu1[i].addEventListener("click",function(){
+                
+        //         for(let j = 0; j < tabMenu1.length; j++){
+        //             tabMenu1[j].classList.remove("on");
+        //             tabContents1[j].style.display = "none";
+        //         }
+        //         tabMenu1[i].classList.add("on");
+        //         tabContents1[i].style.display = "block";
+        //     });
+        // }
+
+        // for( let i = 0; i < tabMenu2.length; i++){
+        //     tabMenu2[i].addEventListener("click",function(){
+                
+        //         for(let j = 0; j < tabMenu2.length; j++){
+        //             tabMenu2[j].classList.remove("on");
+        //             tabContents2[j].style.display = "none";
+        //         }
+        //         tabMenu2[i].classList.add("on");
+        //         tabContents2[i].style.display = "block";
+        //     });
+        // }
+
+
+        // 함수호출
+        tabComponent(tabMenu1,tabContents1);
+        tabComponent(tabMenu2,tabContents2);
+
+        function tabComponent(menu,contents){
+            for( let i = 0; i < menu.length; i++){
+                menu[i].addEventListener("click",function(){
+                    
+                    for(let j = 0; j < menu.length; j++){
+                        menu[j].classList.remove("on");
+                        contents[j].style.display = "none";
+                    }
+                    menu[i].classList.add("on");
+                    contents[i].style.display = "block";
+                });
+            }
+        }
+
+
+        </script>
+</body>
+</html>

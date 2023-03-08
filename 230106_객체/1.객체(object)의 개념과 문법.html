@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체의 개념과 사용방법</title>
+</head>
+<body>
+    <div class="test1">나는 첫번째 태그입니다.</div>
+    <div class="test2">안녕하세요</div>
+    <div class="test3">나는 테스트3</div>
+
+    <script>
+        // let fruit = "사과";
+        // let drink = "콜라";
+        // let meat = "삼겹살";
+        /* 이런식으로 변수가 한 100개 정도 있다고 상상해보자.
+            그럼 나중에 찾기가 너무 어려워질 것이다.
+            그래서 연관성이 있는 것들끼리 배열을 사용해서 정리하고 숫자 순서로 찾는다. */
+
+        let 냉장고 = ["사과", "콜라", "삼겹살","대파"]; 
+        
+        // index값 / valu값(데이터값)
+        // 냉장고[2];
+        // 냉장고[3];
+        // 배열은 항상 데이터가 들어가 있는 순서에 따라서 결정된다.
+
+        // 객체는 순서에 상관없이 데이터를 담아주는(보관) 형태 => 객체
+        let box = {
+            fruit:"사과"+"는 10,000원 입니다.",
+            drink:"콜라",
+            meat:"삼겹살",
+            price:30000 + 100,
+            gold:true
+        }
+ 
+        // .은 객체 안에 있는 데이터에 접근하고 싶을 때 사용하는 연산자 => 객체접근연산자 object Accsece Operator
+        // 객체 안에서 이름을 담고 있는 것을 key라고 부른다. key값이라고도 부른다. key 안에 들어가 있는 내용은 valu.데이터값
+        // key값 => fruit, drink, meat
+        // value 데이터값 => 사과, 콜라, 삼겹살..
+        // alert(box.drink);
+        // alert(box.price);
+
+        // document.querySelector(".test1").innerHTML = box.meat;
+
+        // box.fruit = "포도";
+        // box.fruit = "딸기";
+        console.log(box.fruit);
+        console.log(box.price);
+
+        // 프로퍼트(property) => 객체 안에 있는 변수를 이렇게 부른다. 실제로 변수랑 똑같다.
+        // 변수나 프로퍼티나 부르는 이름이 다를 뿐, 다 같은 변수다.
+        // 연산도 가능하다.
+
+
+        
+        const test1 = document.querySelector(".test1");
+        const test2 = document.querySelector(".test2");
+        const test3 = document.querySelector(".test3");
+
+
+        box = {
+            fruit1:["사과","딸기","바나나","키위","포도"],
+            fruit2:{apple:"사과", strawberry:"딸기",banan:"바나나",kiwi:"키위",grape:"포도"},
+            drink:"콜라",
+            meat:"삼겹살",
+            price:30000 + 100,
+            gold:true,
+            setcolor:function(tagName,frontColor,bgColor){
+                tagName.style.color = frontColor;
+                tagName.style.background = bgColor;
+            },
+            changeMove:function(tags,fontSize,text){
+                tags.style.fontSize = fontSize;
+                alert(text);
+            }
+        }
+
+        let box1 = [
+            {
+                fruit:"사과",
+                meat:"삼겹살"
+            },
+            {
+                fruit:"딸기",
+                meat:"항정살"
+            },
+            {
+                fruit:"포도",
+                meat:"목살"
+            },
+
+        ]
+        alert(box1[2].meat)
+
+
+
+        // box.setcolor(test1,"red","yellow");
+        // box.setcolor(test2,"#fff","#000");
+        // box.setcolor(test3,"blue","green");
+
+        // box.changeMove(test3,"20px","이것까지 잘 뜨나요?");
+        // box.changeMove(test1,"50px","경고창을 띄웁니다.");
+        // box.changeMove(test2,"100px","글씨가 너무 큽니다");
+
+        // 메소드 method / 객체 안에 있는 함수를 메소드라고 부른다.
+
+        // 기본적으로 제공하는 객체 => 내장객체
+
+            
+
+
+
+    </script>
+</body>
+</html>

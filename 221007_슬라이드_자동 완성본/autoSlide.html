@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slider(슬라이더)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/custom.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div class="slider">
+            <div class="view">
+                <div>슬라이드1번</div>
+                <div>슬라이드2번</div>
+                <div>슬라이드3번</div>
+                <div>슬라이드4번</div>
+                <div>슬라이드5번</div>
+            </div>
+
+            <div class="btnSet">
+                <ul class="pager">
+                    <li class="on" data-index="0"></li>
+                    <li data-index="1"></li>
+                    <li data-index="2"></li>
+                    <li data-index="3"></li>
+                    <li data-index="4"></li>
+                </ul>
+                <div class="switch">
+                    <button class="stop">멈춤</button>
+                    <button class="play">재생</button>
+                </div>
+            </div>
+
+
+            <button class="leftBtn">이전</button><!--웹폰트아이콘 / 화살표 이미지 등-->
+            <button class="rightBtn">이후</button>
+        </div>
+    </div>
+
+
+
+    <!-- 사용자 정의 속성 (커스텀 속성)
+        이름을 지정할때 규칙
+        id="test" class="food"
+        data-index3="안녕" X 숫자로 이름 사용불가
+        data-go3ld="33"  X 한글도 이름 사용불가
+        data-slider="수요일" -기호만 지정가능
+        data-lunch="점심은먹었니"
+        (변하지않는것)
+
+        속성값은 넣고싶은 데이터를 미리 세팅할수 있음
+    -->
+    <!-- <p data-number="0">안녕하세요</p>
+    <h2 data-number="1">반갑습니다</h2>
+    <div data-number="2">오늘은 수요일</div>
+    <a data-number="3" href="#">나는 링크입니다.</a> -->
+</body>
+</html>

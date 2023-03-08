@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문연습</title>
+</head>
+<body>
+    <div class="test">첫번째태그</div>
+    <div class="test">두번째태그</div>
+    <div class="test">세번째태그</div>
+    <div class="test">네번째태그</div>
+
+    <script>
+        const test = document.querySelectorAll(".test");
+
+        for(let i = 0; i <= 3; i++){
+            test[i].addEventListener("click",function(){
+                alert(i+"번째 div 태그가 클릭되었습니다")
+                test[i].style.color = "red";
+                test[i].style.fontSize = "30px";
+            });
+        }
+
+    </script>
+</body>
+</html>

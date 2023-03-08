@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .test{ color: red; background-color: yellow; font-size: 15px;}
+        .bath{ width: 500px; height: 300px;}
+        .bath img{ width: 100%; height: 100%; }
+    </style>
+    <title>데이터타입</title>
+</head>
+<body>
+    <div class="test">안녕하세요 반갑습니다.
+        <ul class="gnb">메인 메뉴 묶음입니다.
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+        <div class="bath">
+            <img src="img/img1.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        let a = 5; //숫자
+        let b = "5"; //문자
+        a = 5 + 3; //8 정수형
+        b = "5" + 3;//문자5 숫자3
+        let c = 10 == "10";
+        // == 은 왼쪽과 오른쪽 값을 비교하는데 데이터 타입은 비교하지 않고 값만 비교함 그래서 true
+        let d = 10 === "10";
+        //=== 은 왼쪽과 오른쪽 값 뿐만 아니라 데이터 타입까지 비교해 같은지 알려줌 false
+        let e = 10 != 5;
+        //!=은 왼쪽과 오른쪽 값이 다르냐 라고 묻는다. 다르면 true 같으면 false
+        //&&은 왼쪽과 오른쪽 값이 둘다 모두 참일때 true
+        //||은 왼쪽과 오른쪽 값 두개 중 하나만 참이라도 true
+
+
+        alert(e);
+    // alert(typeof(c));
+
+
+   // 태그선택하는 방법
+    const test = document.querySelector(".test");
+    const gnb = document.querySelectorAll(".gnb li"); //여러개 선택시에는 All은 붙여줘야함.
+    const bath = document.querySelector(".bath img");    
+  
+
+    test.addEventListener("click",function(){
+        test.style.color="blue";
+        test.style.backgroundColor="pink";
+        test.style.fontSize="50px";
+        bath.setAttribute("src","img/img2.jpg");
+    // 태그 안에 속성값을 변경할 때에는 태그를 지정하는 변수명.setAttribute("변경할 속성명","변경할 속성값")
+    });
+
+
+
+
+    </script>
+</body>
+</html>

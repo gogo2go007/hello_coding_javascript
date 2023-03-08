@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>puracaaban</title>
+</head>
+<body>
+    <header>
+        <div class="top_nav">
+            <div class="center">
+                <div class="top_nav_left">
+                    <div class="top_nav_left_img">
+                        <img src="img/img_call.png" alt="">
+                    </div>
+                    <p>1599-3360</p>
+                    <span>오후1시 - 오후5시 (주말, 및 공휴일은 휴무입니다)</span>
+                </div>
+                <ul class="top_nav_right">
+                    <li><a href="#"><img src="img/icon_user.png" alt=""></a></li>
+                    <li><a href="#"><img src="img/icon_wish.png" alt=""></a></li>
+                    <li><a href="#"><img src="img/icon_user_02.gif" alt=""></a></li>
+                </ul>
+                <div class="my_page"><a href="#">마이페이지</a></div>
+            </div>
+        </div>
+        <div class="bot_nav">
+            <div class="gnb_bg"></div>
+            <div class="center">
+                <div class="logo">
+                    <a href="#"><img src="img/logo.png" alt=""></a>
+                </div>
+                <ul class="gnb">
+                    <li>
+                        <a href="#">WE ARE</a>
+                        <ul class="depth2">
+                            <li><a href="#">OUR STORY</a></li>
+                            <li><a href="#">NEED TO KNOW</a></li>
+                            <li><a href="#">OUR MISSION</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">FOR CHILDREN</a></li>
+                    <li><a href="#">FOR HOME</a></li>
+                    <li>
+                        <a href="#">COMMUNITY</a>
+                        <ul class="depth2">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">상품사용후기</a></li>
+                            <li><a href="#">상품QNA</a></li>
+                            <li><a href="#">자유게시판</a></li>
+                            <li><a href="#">갤러리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+
+    <script>
+        const gnb = document.querySelector(".gnb");
+        const botNav = document.querySelector(".bot_nav");
+
+        gnb.addEventListener("mouseenter",function(){
+            botNav.classList.add("on");
+        });
+
+        gnb.addEventListener("mouseleave",function(){
+            botNav.classList.remove("on");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>isotope 정렬 플러그인</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        a {text-decoration: none;}
+        ul,ol,li {list-style: none;}
+
+        .cont1 {width: 1200px; margin: 0 auto;}
+        .cont1 .btns {text-align: center; font-size: 0; margin-top: 50px;}
+        /* 인라인 요소나 인라인블록 요소가 가로로 정렬되어있을때는 한 칸 띄어쓰기 공백이 발생함
+           해당 자식들을 감싸는 부모태그에다가 font-size:0 을 사용
+           해당 부모안에 자식들에세 폰트사이즈를 다시 지정하면 해결됨 
+        */
+        .cont1 .btns li {display: inline-block; width: 180px; height: 40px; 
+                         line-height: 40px; margin: 0 10px; font-size: 15px;}
+        .cont1 .btns li a {display: block; width: 100%; height: 100%; background:beige;
+                           border: 1px solid #000;}
+        .cont1 .btns li.on a {background: #000; border: 1px solid beige; color: #fff;}
+
+        /* 실제 정렬기능 API가 적용될 박스들 */
+        .contents {display: flex; flex-wrap: wrap;}
+        .contents .all {width: 280px; height: 200px; margin: 20px 10px; text-align: center; 
+                        color: red; font-size: 20px; line-height: 200px;}
+        .contents .cat {background: pink;}
+        .contents .dog {background: black;}
+        .contents .kangaroo {background: yellow;}
+        .contents .rabbit {background: orange;}
+    </style>
+</head>
+<body>
+    <div class="cont1">
+        <!-- href  src  class  id 속성들은 HTML언어에서 기본적으로 제공되는 글로벌global 속성 -->
+        <!-- 작업자가 필요에 의해서 원하는 속성의 이름을 만들어서 사용할 수 있는 커스텀 속성(사용자 정의 속성) -->
+        <!-- data 접두사가 붙어야 함. data-name  data-food  data-test  data-font 등등 -->
+        <ul class="btns">
+            <li class="on" data-filter="*"><a href="#">전체보기</a></li>
+            <li data-filter=".cat"><a href="#">고양이</a></li>
+            <li data-filter=".dog"><a href="#">강아지</a></li>
+            <li data-filter=".kangaroo"><a href="#">캥거루</a></li>
+            <li data-filter=".rabbit"><a href="#">토끼</a></li>
+        </ul>
+        <div class="contents">
+            <div class="all cat">고양이</div>
+            <div class="all dog">강아지</div>
+            <div class="all cat">고양이</div>
+            <div class="all rabbit">토끼</div>
+            <div class="all rabbit">토끼</div>
+            <div class="all kangaroo">캥거루</div>
+            <div class="all cat">고양이</div>
+            <div class="all rabbit">토끼</div>
+            <div class="all kangaroo">캥거루</div>
+            <div class="all dog">강아지</div>
+            <div class="all dog">강아지</div>
+            <div class="all kangaroo">캥거루</div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script>
+        // isotope API 사용방법
+        let elem = document.querySelector('.contents');
+        let iso = new Isotope( elem, {
+            // options
+            itemSelector: '.all',
+            layoutMode: 'fitRows',
+            transitionDuration: '0.5s'
+        });
+
+        // 메뉴를 클릭 시 정렬 기능 실행
+        const btns = document.querySelectorAll(".btns > li");
+
+        btns.forEach(function(item,index){
+
+            item.addEventListener("click",function(e){
+
+                e.preventDefault(); //a태그가 가지고 있는 페이지 이동기능 중지
+
+                // 클릭한 메뉴의 data-filter 속성값을 담아줄 변수
+                let attrValue = item.getAttribute("data-filter");
+                
+                // 정렬기능 객체가 들어가있는 iso 변수에 -> 기능을 실행시키자.
+                iso.arrange({
+                    filter:attrValue
+                });
+
+                // 클릭한 메뉴만 활성화, 나머지는 비활성화
+                btns.forEach(function(menu,index){
+                    menu.classList.remove("on")
+                });
+                item.classList.add("on");
+            });
+
+        });
+    </script>
+</body>
+</html>

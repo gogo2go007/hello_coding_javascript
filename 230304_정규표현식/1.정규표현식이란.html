@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+        <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+
+        .form_control.success input {border: 2px solid green;}
+        .form_control.error input {border: 2px solid red;}
+
+        .form_control .error_msg {display: none;}
+        .form_control.error .error_msg {display: block; color: red;}
+    </style>
+</head>
+<body>
+    <!-- 
+    정규표현식이란??
+    
+    regex(리젝스)
+
+    regular expression -> 문자열에서 특정한 규칙이나 패턴에 부합하는 단어나 집합을 찾아내기 위한 검색 패턴 
+
+    -->
+
+    <form id="check_form" action="" method="">
+        <div class="form_control">
+            <label for="id">아이디 입력</label>
+            <input type="text" id="id" name="id" placeholder="최대 10자의 영문 대소문자, 숫자, _만 사용 가능합니다.">
+            <span class="error_msg"></span>
+        </div>
+        <div class="form_control">
+            <label for="pass">비밀번호 입력</label>
+            <input type="text" id="pass" name="pass" placeholder="최대 6자리의 영문 대소문자,숫자, !_#&$만 사용 가능합니다.">
+            <span class="error_msg"></span>
+        </div>
+        <div class="form_control">
+            <label for="email">이메일 주소 입력</label>
+            <input type="text" id="email" name="email" placeholder="test@이메일주소.com 형식으로 작성해주세요">
+            <span class="error_msg"></span>
+        </div>
+        <div class="form_control">
+            <label for="phone">휴대폰번호 입력</label>
+            <input type="text" id="phone" name="phone" placeholder="010-0000-0000형식으로 작성해주세요">
+            <span class="error_msg"></span>
+        </div>
+        <div class="input_count">입력글자수 확인</div>
+        <button type="submit">회원가입</button>
+    </form>
+
+    <script>
+        // form 태그 선택
+        const checkForm = document.querySelector("#check_form"); //submit 이벤트 사용하는 대상
+        // id 입력받는 태그
+        const userId = document.querySelector("#id"); //id 입력받는 대상
+        const userPass = document.querySelector("#pass"); // 비밀번호 입력받는 대상
+        const userEmail = document.querySelector("#email"); // 이메일 입력받는 대상
+        const userPhone = document.querySelector("#phone"); // 이메일 입력받는 대상
+        const inputCount = document.querySelector(".input_count"); //입력한 글자수 출력
+
+        // 해당 인풋태그에 입력한 글자수를 출력하는 기능
+        userPass.addEventListener("keyup",function(){
+
+            // 해당 인풋태그에 입력한 데이터의 길이값(갯수)을 알아내서 변수에 담아줌
+            let count = userPass.value.length; 
+            inputCount.innerHTML = count; // 해당 길이값을 태그의 글자내용으로 보여줌
+
+        });
+
+        // 입력한 아이디가  6~10자리의 영문 대소문자/숫자/기호/_기호만 허용되게 정규표현식 사용
+        // ^ 문자 시작 $ 문자 씀 => 스크립트에서는 이걸 앞뒤로 붙여야 한다.
+        let regexCheck = /^\w{6,10}$/; // 체크할 문자 패턴
+    </script>
+</body>
+</html>

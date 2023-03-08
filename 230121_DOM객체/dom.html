@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model(DOM)</title>
+</head>
+<body>
+    <div id="test">나는 ID 속성을 가지고 있어요.</div>
+    <div class="test2">
+        <div class="box">박스1</div>
+        <div class="box">박스2</div>
+        <div class="box">박스3</div>
+        <div class="box">박스4</div>
+    </div>
+    <ul>
+        <li>클래스나 아이디가 없는 상태</li>
+        <li>클래스나 아이디가 없는 상태</li>
+        <li>클래스나 아이디가 없는 상태</li>
+        <li>클래스나 아이디가 없는 상태</li>
+    </ul>
+    <a id="link1" href="https://naver.com">네이버 사이트로 이동</a>
+    <a id="link2" href="#">링크 주소를 변경해보자</a>
+
+    <script>
+        // DOM은 html상에서 작업하는 모든 태그들의 속성, 스타일, 텍스트 내용등 .. 태그의 모든 것.
+        // 태그의 모든 것들을 조작하고 변경하고 기능을 걸어줄 수 있다.
+        // 태그 조작의 모든 것(메소드(함수)와 프로퍼티(변수))
+
+        // 태그 선택하는 방법 종류
+        // 1. id 속성값만 가지고 있는 태그 대상만 선택 가능(단일)
+        const test = document.getElementById("test");
+        // 2. class 속성을 가지고 있는 태그들만 선택 가능(단일, 복수)
+        const test2 = document.getElementsByClassName("box");
+        // 3. 태그 이름만 선택할 수 있는 구문(단일, 복수) => 부모태그 안에서 자식 태그를 선택할 수 없다. 앞에 부모 이름 쓰면 오류남
+        const test3 = document.getElementsByTagName("li");
+
+        // querySelector() querySelectorAll()
+        // 위의 세가지 메소드는 쓰는 방법이 번거롭기 때문에 쿼리셀렉터 구문을 제일 많이 쓴다.
+
+        // for(let i = 0; i < test3.length; i++){
+        //     test3[i].addEventListener("click",function(){
+        //         alert("경고창이 등장합니다.")
+        //     });
+        // }
+
+        // 태그를 선택했을 때 할 수 있는 조작 방법들
+        // 태그의 속성에 관련된 메소드 <img src ="img/test1.png">
+
+        // 속성값을 가지고 오는 방법 
+        let hrefValue = document.querySelector("#link1").getAttribute("href");
+
+        // 속성값을 변경하고 싶을 때 쓰는 방법
+        document.querySelector("#link2").setAttribute("href", hrefValue);
+
+        // 태그를 선택했을 때 할 수 있는 조작 방법들
+        document.querySelector("#link1").style.color = "red";
+        document.querySelector("#link1").style.fontSize = "50px";
+
+        // 태그에 css 속성값을 가지고 올때 사용하는 방법
+        const test4 = document.querySelector("#link1");
+        let fontColor = window.getComputedStyle(test4).color;
+        // 위는 css를 지정하지 않은 기본 상태의 속성을 가지고 올 수 있고
+        let fontSize = test4.style.fontSize;
+        // 아래는 css가 지정되어 있는 상태에서만 속성값을 가지고 올 수 있음
+        
+        //alert(fontColor);
+
+        // 태그 선택시 할 수 있는 작업 => 이벤트
+        const boxs = document.querySelectorAll(".test2 .box");
+        boxs.forEach(function(item,index){
+            item.addEventListener("click",function(){
+                alert("클릭한 메뉴의 index값은" + (index+1) + "입니다")
+            });
+        });
+
+        // 해당 태그의 글자 내용을 가지고 올 때 사용하는 방법
+        let tagText = document.querySelector("#test").innerHTML;
+
+        document.querySelector("#link2").innerHTML = tagText;
+        
+    </script>
+</body>
+</html>

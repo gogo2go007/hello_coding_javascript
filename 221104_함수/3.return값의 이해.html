@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수에서 리턴값이란??</title>
+</head>
+<body>
+   <div class="test1">테스트1</div>
+    
+    <script>
+        const test = document.querySelector(".test1");
+        
+        let test2 = mul(10,5,2);
+
+        let test3 = 3000 + test2;
+
+        alert(test3);
+        
+        function mul(su1,su2,su3){
+            let result = su1 * su2 * su3;
+            return "푸동이";
+            //리턴값 / 반환값
+            //리턴 값은 함수 안에서 만든 데이터를 바깥쪽에서 사용할 수 있게끔 내보낼때 사용
+            //리턴값은 의무는 아니고 경우에 따라 쓰일때가 있고 안쓰일때가 있음.
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자동실행함수 다른 종류 기능 살펴보기</title>
+</head>
+<body>
+    <div class="counter">0</div>
+    <button class="prev">이전버튼</button>
+    <button class="next">이후버튼</button>
+
+    <script>
+        // setTimeout(실행할 함수, 초수);  /  clearTimeout(변수명);
+        // 해당 초수가 지난 다음에 실행할 함수를 딱 한번만 동작시킴
+
+        // setTimeout(function(){
+        //     alert("한번만 실행하고 멈춤")
+        // },2000);
+
+        const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+        const counter = document.querySelector(".counter");
+        let plus = 0;
+
+        nextBtn.addEventListener("click",function(){
+
+            // 1씩 증가, 3이랑 같으면 0으로 변경
+            if(plus == 3){
+                plus = 0;
+            }
+            else{
+                plus++;
+            }
+            counter.innerHTML = plus;
+
+            // 이전, 이후버튼을 둘 다 비활성화
+            prevBtn.disabled = true;
+            nextBtn.disabled = true;
+
+            let btnStart = setTimeout(function(){
+                prevBtn.disabled = false;
+                nextBtn.disabled = false;
+            },2000);
+
+            clearTimeout(btnStart);
+        });
+
+        prevBtn.addEventListener("click",function(){
+            if(plus == 0){
+                plus = 3;
+            }
+            else{
+                plus--;
+            }
+            counter.innerHTML = plus;
+        });
+    </script>
+</body>
+</html>

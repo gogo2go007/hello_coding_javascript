@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬라이드</title>
+    <style>
+        *{ margin: 0; padding: 0;}
+        ol,ul,li{ list-style: none;}
+        a{ text-decoration: none;}
+
+        #slide{ width: 100%; position: relative; overflow: hidden;}
+        #slide .view{ width: 400%; display: flex; transition: all 3s;}
+        #slide .view > div{ width: 25%; height: 300px; font-size: 100px; text-align: center; line-height: 200px;}
+        #slide .view > div:nth-child(1){ background-color: orange;}
+        #slide .view > div:nth-child(2){ background-color: pink;}
+        #slide .view > div:nth-child(3){ background-color: skyblue;}
+        #slide .view > div:nth-child(4){ background-color: yellowgreen;}
+
+        #slide .sBtn { position: absolute; top: 50%; transform: translateY(-50%); width: 70px; height: 70px; border: none; background-color: #000; color: #fff; cursor: pointer;}
+        #slide .prevBtn { left: 10px;}
+        #slide .nextBtn { right: 10px;}
+
+        .bot_menu { position: absolute; left: 50%; bottom: 50px; transform: translateX(-50%); display: flex;}
+        .bot_menu .pager { display: flex;}
+        .bot_menu .pager li { width: 40px; height: 40px; margin: 0 20px;}
+        .bot_menu .pager li a { display: block; height: 100%; border-radius: 50%; background-color: #000;}
+        .bot_menu .pager li.on a{ background-color: gray;}
+        .bot_menu .toggleBtn { width: 60px; cursor: pointer;}
+    </style>
+</head>
+<body>
+    <div class="slider">
+        
+    </div>
+    <div id="slide">
+        <div class="view">
+            <div>화면1</div>
+            <div>화면2</div>
+            <div>화면3</div>
+            <div>화면4</div>
+        </div>
+        <button class="prevBtn sBtn">이전버튼</button>
+        <button class="nextBtn sBtn">이후버튼</button>
+        <div class="bot_menu">
+            <ul class="pager">
+                <li class="on"><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+            <button class="toggleBtn" value="stop">멈춤</button>
+        </div>
+    </div>
+    
+    <script>
+        // 1.변수세팅
+        const view = document.querySelector(".view"); //화면 왔다갔다 움질일 대상
+        const prevBtn = document.querySelector(".prevBtn"); // 이전버튼
+        const nextBtn = document.querySelector(".nextBtn"); //이후버튼
+        const pager = document.querySelectorAll(".pager li"); //동그라미버튼 4개
+        const toggle = document.querySelector(".toggleBtn"); //자동재생 멈춤/재생 버튼
+        let toggleValue = ""; //토글버튼 valu값 담아주기 위한 전역 변수
+        let sNumber = 0; //슬라이드 화면 번호 // 전역변수 => 모든 구간에서 사용할 수 있음.
+
+        // 2.이벤트 구간
+        // 이후버튼을 클릭했을 때 이벤트
+        nextBtn.addEventListener("click",function(){
+            nextSlideCondition();          
+        });
+
+        // 이전버튼 클릭 시 이벤트 동작
+        prevBtn.addEventListener("click",function(){
+            prevSlideCondision();
+            btnDisabledChange();
+            slideMove();
+        });
+
+        // 자동실행 멈춤/재생 토글 버튼 이벤트 동작
+        toggle.addEventListener("click",function(){
+
+            //클릭 시 토글 버튼의 value값을 가지고 와서 stop인지 play인지 체크한 다음에 기능이 멈추거나 자동실행 될 수 있도록 처리
+            toggleValue = toggle.value;
+
+            if(toggleValue == "stop"){
+                clearInterval(autoSlide);
+                toggle.value = "play";
+                toggle.innerHTML = "재생";
+            }
+            else{
+                //setInterval함수가 다시 동작할 수 있도록 처리
+                autoSlide = setInterval(function(){
+                    nextSlideCondition();
+                },5000);
+
+                toggle.value = "stop";
+                toggle.innerHTML = "멈춤";
+            }
+        });
+
+        // 하단 동그라미 버튼 클릭 시 이벤트 동장
+        for( let i = 0; i < pager.length; i++){
+            pager[i].addEventListener("click",function(){
+                // 동그라미 버튼 색상 모두 비활성화
+                for(let j = 0; j < pager.length; j++){
+                    pager[j].classList.remove("on");
+                }
+                nextSlideCondition();
+                slideMove();
+            });
+        }
+
+        // 슬라이드를 다음 화면으로 자동을 1장씩 넘어가게 해주는 setInterval()
+        // 변수에 담아서 쓰지 않으면 나중에 멈출 수가 없다.
+        let autoSlide = setInterval(function(){
+            // 슬라이드 화면이 다음 화면으로 넘어가도록
+            nextSlideCondition();
+
+        },5000);
+
+
+        // 3.중복코드 정리구간
+        // 좌우버튼 사용 불가능 -> 가능
+        function btnDisabledChange(){
+            // 버튼 기능을 슬라이드 이동하는 시간동안 클릭 못하게 처리
+            prevBtn.disabled = true;
+            nextBtn.disabled = true;
+
+            // 3초 뒤에 1번만 실행
+            setTimeout(function(){
+                prevBtn.disabled = false;
+                nextBtn.disabled = false;
+            },3000);
+        };
+
+        // 동그라미 버튼 색상 비활성화 <-> 활성화 -> 슬라이드 화면이 옆으로 넘어가는 코드
+        function slideMove(){
+            // 동그라미 버튼을 일괄적으로 비활성화
+            for(let i = 0; i < pager.length; i++){
+                pager[i].classList.remove("on");
+            }
+
+            // 다음 번호의 동그라미 버튼을 하나만 활성화
+            pager[sNumber].classList.add("on");
+
+            //슬라이드 화면이 넘어가는 기능
+            view.style.marginLeft = -100 * sNumber + "%";
+        }
+
+        // 다음슬라이드 화면 변수값 변경하는 조건문 코드
+        function nextSlideCondition(){
+            if(sNumber == pager.length-1){
+                sNumber = 0;
+            }
+            else{
+                sNumber++;
+            }
+            btnDisabledChange();
+            slideMove();
+
+        }
+
+        function prevSlideCondision(){
+            if(sNumber == 0){
+                sNumber = pager.length-1;
+            }
+            else{
+                sNumber--;
+            }
+        }
+
+    </script>
+</body>
+</html>

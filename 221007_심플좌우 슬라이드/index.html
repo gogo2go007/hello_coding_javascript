@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 좌우 슬라이드 실습</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="cont1">
+        <div class="slider">
+            <div class="view">
+                <div><img src="img/main1.jpg"></div>
+                <div><img src="img/main2.jpg"></div>
+                <div><img src="img/main3.jpg"></div>
+                <div><img src="img/main4.jpg"></div>
+                <div><img src="img/main5.jpg"></div>
+            </div>
+            <div class="left_btn"><img src="img/left_bt.png"></div>
+            <div class="right_btn"><img src="img/right_bt.png"></div>
+            <button class="toggle_btn" value="stop">멈춤</button>
+        </div>
+    </div>
+
+    <!-- <script src="js/Slide.js"></script> -->
+
+    <script> 
+        let sNumber = 0;
+        const toggleBtn = document.querySelector(".toggle_btn");
+        // let autoSlide = setInterval(function(){
+        //     if(sNumber == 0){
+        //         sNumber = 4;
+        //     }
+        //     else{
+        //         sNumber = sNumber + 1;
+        //     }
+        //     document.querySelectorAll(".view > img").style.marginLeft = -100 * sNumber + "%";
+        // },500);
+
+        document.querySelector(".left_btn").addEventListener("click",function(){
+            if(sNumber==0){
+                sNumber=4;
+            }
+            else{
+                sNumber=sNumber - 1;
+            }
+            document.querySelector(".view").style.marginLeft = -100 * sNumber + "%";
+        });
+
+        document.querySelector(".right_btn").addEventListener("click",function(){
+            if(sNumber == 4){
+                sNumber = 0;
+            }
+            else{
+                sNumber = sNumber + 1;
+            }
+            document.querySelector(".view").style.marginLeft = -100 * sNumber + "%";
+        });
+
+        
+
+
+    </script>
+</body>
+</html>

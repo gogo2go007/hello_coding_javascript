@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 동작 이해</title>
+    <style>
+        body{background-color: pink;}
+        body.on{background-color: yellow;}
+        .btn{border: 1px solid #000; width: 250px;}
+    </style>
+</head>
+<body>
+    <div class="btn">나를 누르면 배경색이 바뀝니다</div>
+    <script>
+        const body=document.querySelector("body");
+        const btn=document.querySelector(".btn");
+
+        btn.addEventListener('click',function(){
+            body.classList.add("on");
+        });
+        
+    </script>
+</body>    
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>타이핑효과</title>
+    <style>
+        * {margin: 0; padding: 0;}
+
+        .typing::after {content: ""; display: inline-block; width: 2px; height: 15px; background-color: #000; 
+                        animation-name: autoCurser; animation-duration: 0.7s; animation-iteration-count: infinite;}
+
+                        @keyframes autoCurser {
+                            0%{
+                                opacity: 0;
+                            }
+                            100%{
+                                opacity: 1;
+                            }
+                        }
+                        /* 애니메이션 속성은 자동으로 css가 부드럽게 변화되는 과정 기능을 구현할때*/
+
+    </style>
+</head>
+<body>
+    <div class="typing">
+
+    </div>
+    <script>
+        let text = "오늘은 2022년 마지막 날입니다.\n 한 해동안 수고하셨습니다.\n 새해 복 많이 받으세요"; // 미리 준비된 텍스트
+        let viewText = ""; // 한글자씩 출력되는 값을 담아줄 변수
+        let i = 0;
+
+        // 타이핑 기능 효과 코드를 담고 있는 함수
+
+        let autoTyping = setInterval(typing,100);
+
+        function typing(){
+            viewText = text[i++];
+
+            // 조건문으로 viewText 변수 안에 들어간 내용이 \n 문자열과 같나?
+            if(viewText == "\n"){
+                document.querySelector(".typing").innerHTML +="<br>"
+            }
+            else{
+                document.querySelector(".typing").innerHTML += viewText;
+            }
+
+            if(i > text.length-1){
+
+                clearInterval(autoTyping);
+
+                setTimeout(function(){
+                    document.querySelector(".typing").innerHTML = "";
+                    i = 0;
+                    autoTyping = setInterval(typing,100);
+                },3000);
+
+            }
+        }
+
+    </script>
+</body>
+</html>

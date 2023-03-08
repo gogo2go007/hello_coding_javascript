@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탭더보기연습</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        a{ text-decoration: none; color: #000;}
+        ol,ul,li{ list-style: none;}
+
+        #contents{ width: 1100px; margin: 0 auto; background-color: antiquewhite; margin-top: 200px;}
+        #contents .tab_menu { position: relative; }
+        #contents .tab_menu .tab_menu_wrap li{ width: 300px; height: 100px; background-color: aquamarine; text-align: center; line-height: 100px; margin-bottom: 20px; }
+        #contents .tab_menu .tab_menu_wrap li a{ display: block; width: 100%; height: 100%;}
+        #contents .tab_menu .tab_menu_wrap li.on{ background-color: blue;}
+        #contents .tab_menu .tab_menu_wrap li.on a{ color: #fff; font-weight: bold;}
+
+        #contents .tab_menu .tab_contents{width: 73%; height: 460px; position: absolute; top: 0; left: 300px; display: none; text-align: center; line-height: 460px; font-size: 25px;}
+        #contents .tab_menu > .cont1{ background-color: coral; display: block;}
+        #contents .tab_menu > .cont2{ background-color: yellow;}
+        #contents .tab_menu > .cont3{ background-color: green;}
+        #contents .tab_menu > .cont4{ background-color: palevioletred;}
+
+        #contents .more{ margin-top: 100px;}
+        #contents .more h2{ font-size: 25px; text-align: center; font-weight: 500; margin-bottom: 20px; color: #555;}
+        #contents .more p{ font-size: 16x; text-align: center; margin-bottom: 20px; }
+        #contents .more_list{ display: flex; justify-content: space-between; flex-wrap: wrap;}
+        #contents .more_list li{ width: 32%; height: 300px; line-height:300px; text-align:center;margin-bottom: 20px;background-color: aquamarine; display: none;}
+        #contents .more_list li:nth-child(1){ display: block;}
+        #contents .more_list li:nth-child(2){ display: block;}
+        #contents .more_list li:nth-child(3){ display: block;}
+        #contents .more_list li:nth-child(2n){ margin-left: 10px; margin-right: 10px;}
+        #contents .more_btn{ width: 30%; height:40px; margin: 0 auto; background-color: rgb(18, 28, 136); color: #fff; font-size: 15px; 
+            text-align: center; line-height: 40px; cursor: pointer; margin-bottom: 30px;}
+    
+    </style>
+</head>
+<body>
+    <div id="contents">
+        <div class="tab_menu">
+            <ul class="tab_menu_wrap">
+                <li class="on"><a href="#">탭메뉴1</a></li>
+                <li><a href="#">탭메뉴2</a></li>
+                <li><a href="#">탭메뉴3</a></li>
+                <li><a href="#">탭메뉴4</a></li>
+            </ul>
+            <div class="tab_contents cont1 on">컨텐츠1</div>
+            <div class="tab_contents cont2">컨텐츠2</div>
+            <div class="tab_contents cont3">컨텐츠3</div>
+            <div class="tab_contents cont4">컨텐츠4</div>
+        </div>
+        <div class="more">
+            <h2>더보기</h2>
+            <p>버튼 누르면 펼치기</p>
+            <ul class="more_list">
+                <li><a href="#">목록1</a></li>
+                <li><a href="#">목록2</a></li>
+                <li><a href="#">목록3</a></li>
+                <li><a href="#">목록4</a></li>
+                <li><a href="#">목록5</a></li>
+                <li><a href="#">목록6</a></li>
+                <li><a href="#">목록7</a></li>
+                <li><a href="#">목록8</a></li>
+                <li><a href="#">목록9</a></li>
+                <li><a href="#">목록10</a></li>
+                <li><a href="#">목록11</a></li>
+                <li><a href="#">목록12</a></li>
+            </ul>
+            <div class="more_btn">더보기</div>
+        </div>
+    </div>
+    <script>
+        const tabBtn = document.querySelectorAll(".tab_menu_wrap li");
+        const contents = document.querySelectorAll(".tab_menu > div");
+
+        for(let i = 0; i < tabBtn.length; i++){
+            tabBtn[i].addEventListener("click",function(){
+
+                for(let j = 0; j < tabBtn.length; j++){
+                    tabBtn[j].classList.remove("on");
+                    contents[j].style.display = "none";    
+                }
+                tabBtn[i].classList.add("on");
+                contents[i].style.display = "block";
+            });
+        }
+
+        const moreBtn = document.querySelector(".more_btn");
+        const moreList = document.querySelectorAll(".more_list li");
+
+        let startIndex = 3;
+
+        moreBtn.addEventListener("click",function(){
+
+           for(i = startIndex; i < startIndex +3 ; i++){
+                moreList[i].style.display = "block";
+           } 
+           startIndex = startIndex + 3;
+
+           if(startIndex >= moreList.length){
+            moreBtn.style.display = "none";
+           }
+           
+        });
+
+
+    </script>
+</body>
+</html> 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수란??</title>
+</head>
+<body>
+<!--
+    배열은 연관성 있는 데이터를 하나의 변수에 방(index)을 나눠서
+    데이터를 여러개 담을 때 사용
+    데이터는 number / string / boolean .. 여러데이터 타입을 넣을 수 있음
+    var test = ["아메리카노","라떼","참외라떼","밀크티"];
+
+    함수는 자주 사용하는 구문 혹은 똑같은 스크립트 코드들을 
+    수납공간에 담아서 ->명령어의 형태로 사용하는 문법
+-->
+
+    <button class="btn">출력</button>
+
+    <script>
+        // 변수세팅
+        const btn = document.querySelector(".btn");
+        
+        // 이벤트 구문
+        btn.addEventListener("click",function(){
+            typing(); //함수 호출
+            test1();
+        });
+
+        // 함수 정의
+        function typing(){
+            document.write("글씨출력"+"<br>");
+            document.write("글씨출력"+"<br>");
+            document.write("글씨출력"+"<br>");
+            document.write("글씨출력"+"<br>");
+            document.write("글씨출력"+"<br>");
+            document.write("글씨출력"+"<br>");
+            document.write("글씨출력"+"<br>");
+            document.write("글씨출력"+"<br>");
+            document.write("글씨출력"+"<br>");
+        }
+
+        function test1(){
+            alert("경고창이 뜬다");
+        }
+
+        // fuction 키워드는 함수 명령어를 만들때 사용하는 구문
+        // typing은 작업자가 자주 사용되는 기능을 명령어로 표현할 때 사용할 이름을 지정
+        //  1.한글사용안됨 2. 숫자로 먼저 이름을 표현할 수 없음 3. 띄어쓰기 불가 
+        //  4. 특수문자는 _ $ 두 개만 사용 가능(다른 건 다 안됨) 5. 대소문자 구분함 Typing typing은 서로 다른 이름
+        //  6. 자바스크립트에서 기본적으로 사용되는 명령어(예약어)들은 사용 못함
+        //  function 키워드를 사용해서 함수를 만들었다고 바로 실행되지는 않는다.(함수정의)
+        //  함수를 만든것을 실행시키려면 함수호출을 해야 한다.
+        //함수정의를 할때 작성하는 위치는 위에서 쓰던 아래서 쓰던 별 상관없음.
+    
+    </script>
+</body>
+</html>

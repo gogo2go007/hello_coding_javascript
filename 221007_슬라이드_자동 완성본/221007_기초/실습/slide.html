@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좌우슬라이드</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        .slider{width: 100%; position: relative; overflow: hidden;}
+        .slider .view{ width: 500%; display: flex; transition: all 1s;}
+        .slider .view > div{width: 20%; display: flex;} 
+        .slider .view > div > img{width: 100%} 
+
+        .left_btn{position: absolute; left: 50px; top:50%; transform: translateY(-50%);}
+        .right_btn{position: absolute; right:50px; top:50%; transform: translateY(-50%);}
+    </style>
+</head>
+<body>
+    <div class="cont1">
+        <div class="slider">
+            <div class="view">
+                <div><img src="img/main1.jpg"></div>
+                <div><img src="img/main2.jpg"></div>
+                <div><img src="img/main3.jpg"></div>
+                <div><img src="img/main4.jpg"></div>
+                <div><img src="img/main5.jpg"></div>
+            </div>
+            <div class="left_btn"><img src="img/left_bt.png"></div>
+            <div class="right_btn"><img src="img/right_bt.png"></div>
+        </div>
+    </div>
+
+    <script>
+        const left=document.querySelector(".left_btn");
+        const right=document.querySelector(".right_btn");
+        const view=document.querySelector(".view");
+        
+        /*반복문
+        const slide_img=document.querySelectorAll("view>div");
+        */
+         
+        let s_number = 0;
+
+        left.addEventListener("click", function(){
+            if(s_number==0){
+                s_number= 4;
+            }
+            else{
+                s_number=s_number-1;
+            }
+            view.style.marginLeft=-100 * s_number + "%";
+        });
+
+        right.addEventListener("click", function(){
+            if(s_number==4){
+                s_number= 0;
+            }
+            else{
+                s_number=s_number+1;
+            }
+            view.style.marginLeft=-100 * s_number + "%";
+        });
+
+    </script>
+
+</body>
+</html>

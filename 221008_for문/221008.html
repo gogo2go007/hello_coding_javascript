@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열(array)의개념과 사용방법</title>
+</head>
+<body>
+    <!-- 배열은 연관성 있는 데이터들을 묶어서 저장하는 공간(수납장) -->
+    <div class="test1"></div>
+    <div class="wrap_test">
+        <span>난 0번째 순서</span>
+        <span>난 1번째 순서</span>
+        <span>난 2번째 순서</span>
+        <span>난 3번째 순서</span>
+        <span>난 4번째 순서</span>
+        <span>난 5번째 순서</span>
+        <span>난 6번째 순서</span>
+        <span>난 7번째 순서</span>
+        <span>난 8번째 순서</span>
+        <span>난 9번째 순서</span>
+        <span>난 10번째 순서</span>
+    </div>
+    <script>
+        // 원래 변수는 1개씩만 담긴다. 아래 예시에서 a는 최종적으로 2 하나만을 담게 된다
+        let a = 1;
+        a = 2;
+
+        // 배열은 [] 안에 여러 가지 데이터를 순차적으로 넣어준다. 데이터 사이에는 콤마를 사용해서 구분한다
+        let b = ["토요일", 1000 ,"커리", "푸동", "호두", true];
+        b[0] = "일요일";
+        // 확인하고 싶을 때 검사창에서 콘솔에 가면 확인 가능
+        console.log(b[0]); 
+
+        document. querySelector(".test1").innerHTML = b[3];
+
+        const wrapTest = document.querySelectorAll(".wrap_test > span");
+
+        alert(wrapTest.length);
+
+        // wrapTest[2].addEventListener("click", function(){
+        //     wrapTest[2].style.color = "red";
+        // });
+    
+
+        for(let i = 0; i < wrapTest.length; i++){
+            wrapTest[i].addEventListener("click", function(){
+                wrapTest[i].style.color = "red";
+            });
+        }
+        
+    </script>
+</body>
+</html>

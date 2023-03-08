@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체심화(데이터화 시키기)</title>
+</head>
+<body>
+    <div class="list">
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+    </div>
+    <script>
+        let list = [
+            {
+                name:"손호두",
+                age:100,
+                gender:"여성",
+                birth:"2016-02-14"
+            },
+            {
+                name:"똥푸동",
+                age:99,
+                gender:"남성",
+                birth: "2018-02-05"
+            },
+            {
+                name:"코뽕자",
+                age:99,
+                gender:"여성",
+                birth: "1982-12-03"
+            }
+        ]
+
+        const test = document.querySelectorAll(".test");
+            test[0].innerHTML = list[2].name;
+            test[1].innerHTML = list[1].gender;
+            test[2].innerHTML = list[0].birth;
+
+            test[0].innerHTML = list[0].name +"와"+list[1].name +"은 매우 귀엽습니다."+list[2].name+"는"+"120살까지 살았습니다."
+
+            // 반복문으로 배열안에 있는 객체 데이터를 꺼내서 내용 출력
+            for(let i = 0; i < test.length; i++){
+                test[i].innerHTML = list[i].name;
+            }
+
+            //forEach 반복문 => 배열반복문 / 배열안에 들어가 있는 데이터의 갯수만큼 반복
+            test.forEach(function(item,index){
+                item.addEventListner("click",function(){
+                    item[index].innerHTML = list[index].age;
+                    alert(index);
+                });
+            });
+
+
+    </script>
+</body>
+</html>
